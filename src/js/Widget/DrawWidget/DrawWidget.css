@@ -1,0 +1,44 @@
+.wrapper-widget {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.widget-messages {
+  margin-top: 30px;
+}
+
+.block-title-widget {
+  margin-bottom: 10px;
+}
+
+.block-messages-item {
+  background-color: #ffffff;
+  border: 1px solid #818181;
+  padding: 10px;
+}
+
+.messages-content-block {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content-block {
+  min-width: 150px;
+}
+
+.content-block:nth-child(n + 2) {
+  margin-left: 20px;
+}
+
+.block-date {
+  text-align: right;
+}
+
+.block-email {
+  width: 100%;
+}
