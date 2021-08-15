@@ -15,46 +15,12 @@ export default class DrawWidget {
   drawWidget() {
     this.widget = document.createElement('div');
     this.widget.classList.add('wrapper-widget');
-    this.widget.innerHTML = `    <div class="widget-messages">
+    this.widget.innerHTML = `<div class="widget-messages">
     <div class="block-title-widget">
       <h1 class="title-widget">Incomig</h1>
     </div>
     <div class="block-messages-list">
       <ul class="messages-list">
-        <li class="block-messages-item">
-          <div class="messages-content-block">
-            <div class="content-block block-email">hdghsh@ydhek</div>
-            <div class="content-block block-text">
-              <p class="text-item">Hello from Anya...</p>
-            </div>
-            <div class="content-block block-date">18:40 03.20.2019</div>
-          </div>
-        </li>
-        <li class="block-messages-item">
-          <div class="messages-content-block">
-            <div class="content-block block-email">
-              hdfsdsdfshsh@ydhek
-            </div>
-            <div class="content-block block-text">
-              Hello from Anya...
-            </div>
-            <div class="content-block block-date">
-              18:40 03.20.2019
-            </div>
-          </div>
-        </li>
-        <li class="block-messages-item">
-          <div class="messages-content-block">
-            <div class="content-block block-email">
-              hdfsdsdfshsh@ydhafasdgasdgasdgasek
-            </div>
-            <div class="content-block block-text">
-              Hello from Anya...
-            </div>
-            <div class="content-block block-date">
-              18:40 03.20.2019
-            </div>
-          </div>
       </ul>
     </div>
   </div>`
@@ -72,11 +38,11 @@ export default class DrawWidget {
     const li = document.createElement('li');
     li.classList.add('block-messages-item');
     li.innerHTML = `<div class="messages-content-block">
-    <div class="content-block block-email">hdghsh@ydhek</div>
-    <div class="content-block block-text">
-    </div>
-    <div class="content-block block-date">18:40 03.20.2019</div>
+    <div class="content-block block-email"></div>
+    <div class="content-block block-text"></div>
+    <div class="content-block block-date"></div>
   </div>`
+  li.dataset.id = data.id;
   this.listMessages.insertAdjacentElement('afterbegin', li);
   const blockEmail = li.querySelector('.block-email');
   blockEmail.textContent = data.from;
@@ -90,6 +56,6 @@ export default class DrawWidget {
     if (value.length <= 15) {
       return value;
     }
-    return value.slice(0, 16) + '...';
+    return value.slice(0, 15) + '...';
   }
 }
