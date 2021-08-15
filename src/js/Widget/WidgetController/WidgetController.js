@@ -12,7 +12,7 @@ export default class WidgetController {
   createGetReq() {
     const numbers = interval(5000);
     const stream$ = numbers.pipe(
-      mergeMap(() => ajax.getJSON('http://192.168.1.148:7070/messages/unread').pipe(
+      mergeMap(() => ajax.getJSON('https://yushkevich-polling.herokuapp.com/messages/unread').pipe(
         catchError(err => {
           if (err.status > 500) {
             return throwError(new Error('internal server error'));
