@@ -5,7 +5,7 @@ moment().local('ru');
 
 export default class DrawWidget {
   constructor() {
-    this.init()
+    this.init();
   }
 
   init() {
@@ -23,13 +23,13 @@ export default class DrawWidget {
       <ul class="messages-list">
       </ul>
     </div>
-  </div>`
+  </div>`;
     document.body.appendChild(this.widget);
     this.listMessages = this.widget.querySelector('.messages-list');
   }
 
   drawMessagesList(data) {
-    for( let i of data) {
+    for (const i of data) {
       this.drawMessageItem(i);
     }
   }
@@ -41,21 +41,21 @@ export default class DrawWidget {
     <div class="content-block block-email"></div>
     <div class="content-block block-text"></div>
     <div class="content-block block-date"></div>
-  </div>`
-  li.dataset.id = data.id;
-  this.listMessages.insertAdjacentElement('afterbegin', li);
-  const blockEmail = li.querySelector('.block-email');
-  blockEmail.textContent = data.from;
-  const blockText = li.querySelector('.block-text');
-  blockText.textContent = this.validateMessage(data.subject)
-  const blockDate = li.querySelector('.block-date');
-  blockDate.textContent = moment(data.received).format('HH:mm DD:MM:YYYY')
+  </div>`;
+    li.dataset.id = data.id;
+    this.listMessages.insertAdjacentElement('afterbegin', li);
+    const blockEmail = li.querySelector('.block-email');
+    blockEmail.textContent = data.from;
+    const blockText = li.querySelector('.block-text');
+    blockText.textContent = this.validateMessage(data.subject);
+    const blockDate = li.querySelector('.block-date');
+    blockDate.textContent = moment(data.received).format('HH:mm DD:MM:YYYY');
   }
 
   validateMessage(value) {
     if (value.length <= 15) {
       return value;
     }
-    return value.slice(0, 15) + '...';
+    return `${value.slice(0, 15)}...`;
   }
 }

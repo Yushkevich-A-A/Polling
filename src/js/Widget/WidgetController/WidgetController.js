@@ -13,25 +13,22 @@ export default class WidgetController {
     const numbers = interval(5000);
     const stream$ = numbers.pipe(
       mergeMap(() => ajax.getJSON('https://yushkevich-polling.herokuapp.com/messages/unread').pipe(
-        catchError(err => {
-          if (err.status > 500) {
-            return throwError(new Error('internal server error'));
+        catchError((err) => {
+          if (err.status < 200 || err.status >= 300) {
+            return throwError(new Error('server error'));
           }
-          if (err.status > 400){
-            return throwError(new Error('invalid request'));
-          }
-        })
+        }),
       )),
-      map(value => value.messages),
-    )
+      map((value) => value.messages),
+    );
 
     stream$.subscribe(
-      value =>
-        this.widget.drawMessagesList(value),
-      err => {
+      (value) => this.widget.drawMessagesList(value),
+      (err) => {
+        console.log(err);
         this.widget.drawMessagesList([]);
         this.createGetReq();
-      }
+      },
     );
   }
 }
